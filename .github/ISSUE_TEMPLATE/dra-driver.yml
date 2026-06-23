@@ -1,0 +1,27 @@
+name: DRA Driver Issue
+description: Report an issue related to the DRA driver component
+title: "[DRA Driver]: "
+labels: ["dra-driver"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a DRA driver-related issue!
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a clear and concise description of the issue
+      placeholder: Describe the issue...
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, logs, screenshots, or information here
+      placeholder: Any additional information...
+    validations:
+      required: false

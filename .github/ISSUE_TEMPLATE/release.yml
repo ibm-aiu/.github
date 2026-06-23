@@ -1,0 +1,156 @@
+name: Release Epic
+description: Track and plan a new release of Spyre Operator
+title: "[Release Epic]: v"
+labels: ["epic", "release"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Use this template for:** Planning and tracking Spyre Operator releases.
+        
+        This epic tracks the complete release process including all components. Refer to the [Release Guide](https://github.com/ibm-aiu/spyre-operator-docs/blob/main/maintainer-guide/release.md) for detailed instructions.
+
+  - type: textarea
+    id: overview
+    attributes:
+      label: Overview
+      description: Brief description of this release
+      placeholder: This epic tracks the release of Spyre Operator version X.Y.Z.
+      value: This epic tracks the release of Spyre Operator version
+    validations:
+      required: true
+
+  - type: input
+    id: code-freeze-date
+    attributes:
+      label: Code Freeze Date
+      description: The date when no new features will be accepted for this release
+      placeholder: "YYYY-MM-DD (e.g., 2026-06-12)"
+    validations:
+      required: true
+
+  - type: input
+    id: release-date
+    attributes:
+      label: Target Release Date
+      description: The planned date for the release
+      placeholder: "YYYY-MM-DD (e.g., 2026-06-19)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: planned-features
+    attributes:
+      label: Planned New Features
+      description: List the new features and enhancements planned for this release (use issue numbers with # prefix)
+      placeholder: |
+        - #43 - Add new feature X
+        - #41 - Implement feature Y
+        - Environment Specific Senlib Config Generation for Power
+        - #20 - Need to introduce scoring-based device allocation in Spyre scheduler
+      value: |
+        -
+    validations:
+      required: false
+
+  - type: textarea
+    id: planned-fixes
+    attributes:
+      label: Planned Bug Fixes
+      description: List the bug fixes and improvements planned for this release (use issue numbers with # prefix)
+      placeholder: |
+        - #58 - Fix memory leak in component X
+        - #60 - Resolve race condition in scheduler
+        - #62 - Fix validation error handling
+      value: |
+        -
+    validations:
+      required: false
+
+  - type: textarea
+    id: other-items
+    attributes:
+      label: Other Items
+      description: List other tasks, maintenance items, or external dependencies
+      placeholder: |
+        - https://github.com/ibm-aiu/spyre-operator/issues/44 - External dependency
+        - Maintain internal build pipeline
+        - Update CI/CD workflows
+        - Security patches and dependency updates
+      value: |
+        -
+    validations:
+      required: false
+
+  - type: textarea
+    id: pre-release-checklist
+    attributes:
+      label: Pre-Release Checklist
+      description: Tasks to complete before starting the release process
+      value: |
+        - [ ] All milestone issues completed (except this epic)
+        - [ ] All tests passing
+        - [ ] Documentation reviewed and updated
+        - [ ] Breaking changes documented
+        - [ ] Migration guide prepared (if needed)
+    validations:
+      required: false
+
+  - type: textarea
+    id: release-process-checklist
+    attributes:
+      label: Release Process Checklist
+      description: Steps to execute during the release
+      value: |
+        - [ ] Step 1: Confirm milestone completion
+        - [ ] Step 2: Create GitHub releases for all components
+          - [ ] [spyre-scheduler-plugins](https://github.com/ibm-aiu/spyre-scheduler-plugins/actions/workflows/create-release.yaml)
+          - [ ] [spyre-device-plugin](https://github.com/ibm-aiu/spyre-device-plugin/actions/workflows/create-release.yaml)
+          - [ ] [spyre-webhook-validator](https://github.com/ibm-aiu/spyre-webhook-validator/actions/workflows/create-release.yaml)
+          - [ ] [spyre-health-checker](https://github.com/ibm-aiu/spyre-health-checker/actions/workflows/create-release.yaml)
+          - [ ] [dra-driver-spyre](https://github.com/ibm-aiu/dra-driver-spyre/actions/workflows/create-release.yaml)
+          - [ ] [spyre-operator-actions](https://github.com/ibm-aiu/spyre-operator-actions/actions/workflows/create-release.yaml)
+          - [ ] [spyre-operator](https://github.com/ibm-aiu/spyre-operator/actions/workflows/create-release.yaml)
+        - [ ] Step 3: Create version patches for components (excluding operator)
+          - [ ] [spyre-scheduler-plugins](https://github.com/ibm-aiu/spyre-scheduler-plugins/actions/workflows/version-patch.yaml)
+          - [ ] [spyre-device-plugin](https://github.com/ibm-aiu/spyre-device-plugin/actions/workflows/version-patch.yaml)
+          - [ ] [spyre-webhook-validator](https://github.com/ibm-aiu/spyre-webhook-validator/actions/workflows/version-patch.yaml)
+          - [ ] [spyre-health-checker](https://github.com/ibm-aiu/spyre-health-checker/actions/workflows/version-patch.yaml)
+          - [ ] [dra-driver-spyre](https://github.com/ibm-aiu/dra-driver-spyre/actions/workflows/version-patch.yaml)
+          - [ ] [spyre-operator-actions](https://github.com/ibm-aiu/spyre-operator-actions/actions/workflows/version-patch.yaml)
+        - [ ] Step 4: Merge all component version patch PRs
+        - [ ] Step 5: Create [operator version patch](https://github.com/ibm-aiu/spyre-operator/actions/workflows/version-patch.yaml) (LAST)
+        - [ ] Step 6: Update documentation
+        - [ ] Step 7: Finalize release notes
+    validations:
+      required: false
+
+  - type: textarea
+    id: post-release-checklist
+    attributes:
+      label: Post-Release Checklist
+      description: Tasks to complete after the release
+      value: |
+        - [ ] Release announced
+        - [ ] Next milestone created
+        - [ ] Next epic issue created
+    validations:
+      required: false
+
+  - type: textarea
+    id: known-issues
+    attributes:
+      label: Known Issues
+      description: List any known issues or limitations in this release
+      placeholder: List any known issues or limitations...
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context or information about this release
+      placeholder: Any additional information...
+    validations:
+      required: false
