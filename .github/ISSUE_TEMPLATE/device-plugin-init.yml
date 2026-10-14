@@ -1,0 +1,27 @@
+name: Device Plugin Init Container Issue
+description: Report an issue related to the device plugin init component
+title: "[Device Plugin Init]: "
+labels: ["device-plugin-init"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a device plugin init-related issue!
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a clear and concise description of the issue
+      placeholder: Describe the issue...
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, logs, screenshots, or information here
+      placeholder: Any additional information...
+    validations:
+      required: false
